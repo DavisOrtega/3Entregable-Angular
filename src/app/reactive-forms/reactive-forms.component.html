@@ -1,0 +1,47 @@
+<div class="container">
+
+    <h1 class="row">Mi App</h1>
+    <h2 class="subtitulo">Formulario</h2>
+
+
+    <form [formGroup]="userForm" (ngSubmit)="onsubmit()" class="column">
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nombre</label>
+            <input formControlName="name" type="email" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+            <div *ngIf="userForm.get('name')?.touched && userForm.get('name')?.errors?.['required']"
+                class="alert alert-danger"> Este campo es requerido </div>
+            <div *ngIf="userForm.get('name')?.touched && userForm.get('name')?.errors?.['minlength']"
+                class="alert alert-danger"> Este campo debe tener mas de 3 caracteres </div>
+            <div id="emailHelp" class="form-text"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Correo</label>
+            <input formControlName="email" type="email" class="form-control">
+            <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.errors?.['required']"
+                class="alert alert-danger"> Este campo es requerido </div>
+            <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.errors?.['email']"
+                class="alert alert-danger"> Este campo debe ser un email valido </div>
+        </div>
+
+
+        <div id="emailHelp" class="form-text"></div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+            <div *ngIf="userForm.get('password')?.touched && userForm.get('password')?.errors?.['required']"
+                class="alert alert-danger"> Este campo es requerido </div>
+        </div>
+
+
+        <!-- 
+        <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary"
+            style="margin-top: 20px; padding: 20px; color: black;">Enviar</button> -->
+
+        <button type="button" class="btn btn-outline-primary"
+            style="margin-top: 20px; padding: 20px; color: black;">Enviar</button>
+
+    </form>
+</div>
